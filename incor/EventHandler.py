@@ -49,7 +49,7 @@ class EventHandler(FileSystemEventHandler):
                 if children:
                     print('Previously executing processes terminated')
                 self.cmd = self.compilers[2] + ' ' + cur_path
-                print('issuing system call - ' + self.cmd)
+                print(('issuing system call - ' + self.cmd))
                 self.newCmd = True
 
             elif file_extension == "cpp":
@@ -70,13 +70,13 @@ class EventHandler(FileSystemEventHandler):
                 if os.path.isfile(out_path):
                     # removes the existing output file
                     self.cmd = 'rm ' + out_path
-                    print('issuing system call - ' + self.cmd)
+                    print(('issuing system call - ' + self.cmd))
                     call(self.cmd, shell=True)
 
                 # compiles the cpp program
                 self.cmd = self.compilers[0] + \
                     ' ' + cur_path + ' -o ' + out_path
-                print('issuing system call - ' + self.cmd)
+                print(('issuing system call - ' + self.cmd))
                 call(self.cmd, shell=True)
 
                 if os.path.isfile(out_path):
@@ -84,7 +84,7 @@ class EventHandler(FileSystemEventHandler):
                     if out_path[:2] != './':
                         out_path = './' + out_path
                     self.cmd = out_path
-                    print('issuing system call - ' + self.cmd)
+                    print(('issuing system call - ' + self.cmd))
                     self.newCmd = True
 
             elif file_extension == "c":
@@ -105,20 +105,20 @@ class EventHandler(FileSystemEventHandler):
                 if os.path.isfile(out_path):
                     # removes the existing output file
                     self.cmd = 'rm ' + out_path
-                    print('issuing system call - ' + self.cmd)
+                    print(('issuing system call - ' + self.cmd))
                     call(self.cmd, shell=True)
 
                 # compiles the c program
                 self.cmd = self.compilers[1] + \
                     ' ' + cur_path + ' -o ' + out_path
-                print('issuing system call - ' + self.cmd)
+                print(('issuing system call - ' + self.cmd))
                 call(self.cmd, shell=True)
 
                 if os.path.isfile(out_path):
                     # if the output file has been created
                     out_path = './' + out_path
                     self.cmd = out_path
-                    print('issuing system call - ' + self.cmd)
+                    print(('issuing system call - ' + self.cmd))
                     self.newCmd = True
 
     def on_created(self, event):

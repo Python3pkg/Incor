@@ -48,7 +48,7 @@ def main():
 
     path = sys.argv[1] if len(sys.argv) > 1 else '.'
     if path == '--version':
-        print('incor v' + incor.__version__)
+        print(('incor v' + incor.__version__))
         return
     elif path == '-h' or path == '--help':
         print("""incor can be configured for a run using these options -
@@ -74,7 +74,7 @@ def main():
                 input_file = os.path.join(root, input_name)
                 break
         if input_file is None:
-            print(input_name + ' not found')
+            print((input_name + ' not found'))
     eventhandler = EventHandler(path, compilers)
     eventhandler.parentPid = os.getpid()  # parent process pid
     eventhandler.TemplateName = template
@@ -103,8 +103,8 @@ def main():
                 else:
                     call(eventhandler.cmd, shell=True)
                 print('\n---------------------------------------------------')
-                print('Program execution terminated in %s seconds.' %
-                      (time.time() - start_time))
+                print(('Program execution terminated in %s seconds.' %
+                      (time.time() - start_time)))
             time.sleep(1)
     except KeyboardInterrupt:
         observer.stop()
